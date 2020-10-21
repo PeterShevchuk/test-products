@@ -1,0 +1,41 @@
+.editPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  padding: 5px 10px;
+  border: 0;
+  transition: all 0.2s linear;
+  background-color: black;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.editPage__list {
+  list-style: none;
+  width: 100%;
+}
+.editPage__add {
+  margin-bottom: 20px;
+}
+.editPage__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr repeat(3, 100px) 50px;
+  align-items: center;
+}
+.editPage__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.editPage__item-input {
+  margin-right: 10px;
+}
+.editPage__item-input {
+  padding: 10px;
+}
+.editPage__item-checked {
+  margin: 0 auto;
+}
