@@ -20,11 +20,11 @@
   width: 100%;
 }
 .editPage__add {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .editPage__item {
   display: grid;
-  grid-template-columns: 1fr 1fr repeat(3, 100px) 50px;
+  grid-template-columns: 1fr 150px 60px 100px 50px;
   align-items: center;
 }
 .editPage__item:not(:last-child) {
@@ -37,5 +37,8 @@
   padding: 10px;
 }
 .editPage__item-checked {
-  margin: 0 auto;
+  margin: 0 auto !important;
+}
+.editPage__title-center {
+  text-align: center;
 }

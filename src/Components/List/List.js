@@ -1,14 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
-import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Checkbox from "@material-ui/core/Checkbox";
+import { withStyles } from "@material-ui/core/styles";
+import InfoIcon from "@material-ui/icons/Info";
 
-import { status, fixDate } from "../../vars";
+import { status, fixDate, colorsPriority } from "../../vars";
+
+import nav from "../../vars";
 
 import "./List.css";
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 320,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 const List = ({ data }) => {
   return (
@@ -24,30 +39,44 @@ const List = ({ data }) => {
           </div>
           <ul className="listProducts">
             {data.filterProducts().map((item) => (
-              <li key={item.id} className="listProducts__item">
-                <h3>
-                  (Priority: {item.priority}) {item.nameProduct} - {item.count}
-                </h3>
+              <li key={item.id} className="listProducts__item" style={{ borderColor: colorsPriority[item.priority] }}>
+                <h3>{item.nameProduct}</h3>
                 <div className="listProducts__options">
-                  <input type="checkbox" checked={item.status} onChange={() => data.itemDisabled(item.id)} className="editPage__item-checked" />
-                  <button onClick={() => data.deleteProduct(item.id)}>DELETE</button>
-
-                  <Tooltip title={`Created: ${fixDate(item.date.created)}, Last edit: ${fixDate(item.date.edit)}`}>
-                    <IconButton>
-                      <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="20px" height="20px">
-                        <path d="M64,122c32,0,58-26,58-58S96,6,64,6S6,32,6,64S32,122,64,122z M64,12c28.7,0,52,23.3,52,52s-23.3,52-52,52S12,92.7,12,64 S35.3,12,64,12z" />
-                        <circle cx="64" cy="39" r="9" />
-                        <path d="M64,101c5,0,9-4,9-9V68c0-5-4-9-9-9s-9,4-9,9v24C55,97,59,101,64,101z" />
-                      </svg>
-                    </IconButton>
-                  </Tooltip>
+                  <Checkbox checked={item.status} color="primary" inputProps={{ "aria-label": "secondary checkbox" }} onChange={() => data.itemDisabled(item.id)} className="editPage__item-checked" />
+                  <Button variant="contained" color="secondary" onClick={() => data.deleteProduct(item.id)}>
+                    DELETE
+                  </Button>
+                  <HtmlTooltip
+                    title={
+                      <React.Fragment>
+                        <p className="listProducts__options-info">
+                          <b>Created</b>: {fixDate(item.date.created)}
+                        </p>
+                        <p className="listProducts__options-info">
+                          <b>Last edit</b>: {fixDate(item.date.edit)}
+                        </p>
+                        <p className="listProducts__options-info">
+                          <b>Priority</b>: {item.priority}
+                        </p>
+                        <p className="listProducts__options-info">
+                          <b>Status</b>: {item.status ? status[2] : status[1]}
+                        </p>
+                      </React.Fragment>
+                    }
+                  >
+                    <Button>
+                      <InfoIcon />
+                    </Button>
+                  </HtmlTooltip>
                 </div>
               </li>
             ))}
           </ul>
         </>
       ) : (
-        <h2 className="noneProducts"> No products in list</h2>
+        <h2 className="noneProducts">
+          No products in list, <NavLink to={nav.edit}>please add products</NavLink>
+        </h2>
       )}
     </>
   );

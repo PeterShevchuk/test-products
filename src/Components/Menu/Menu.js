@@ -11,7 +11,7 @@ const Menu = () => {
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__item">
-          <NavLink to={nav.home} className="nav__item-link">
+          <NavLink to={nav.home} exact className="nav__item-link">
             List Products
           </NavLink>
         </li>

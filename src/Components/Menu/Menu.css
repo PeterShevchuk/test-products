@@ -31,6 +31,9 @@
   display: block;
   font-weight: 700;
 }
+.nav__item-link.active {
+  color: blue;
+}
 /* .nav__item-link:not(:last-child) {
   margin-right: 10px;
 } */
