@@ -5,7 +5,7 @@ import Edit from "./Containers/Edit/Edit";
 import Home from "./Containers/Home/Home";
 import Menu from "./Components/Menu/Menu";
 
-import nav, { status } from "./vars";
+import { nav, status } from "./vars";
 
 import "./App.css";
 

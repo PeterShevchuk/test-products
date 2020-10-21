@@ -1,25 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Tooltip from "@material-ui/core/Tooltip";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
 import InfoIcon from "@material-ui/icons/Info";
 
-import { fixDate, colorsPriority } from "../../vars";
+import { fixDate, colorsPriority, HtmlTooltip } from "../../vars";
 
 import "./Edit.css";
-
-const HtmlTooltip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: "#f5f5f9",
-    color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 320,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9",
-  },
-}))(Tooltip);
 
 const Edit = ({ data }) => {
   const initialState = { id: Date.now(), nameProduct: "", priority: 1, date: { created: Date.now(), edit: null }, status: true };
