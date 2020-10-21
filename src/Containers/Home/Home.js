@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import List from "../../Components/List/List";
 
@@ -12,3 +13,7 @@ const Home = ({ data }) => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  data: PropTypes.object.isRequired,
+};

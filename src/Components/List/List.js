@@ -1,12 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
-import { fixDate } from "../../App";
-import { status } from "../../vars";
+import { status, fixDate } from "../../vars";
 
 import "./List.css";
 
@@ -54,3 +54,7 @@ const List = ({ data }) => {
 };
 
 export default List;
+
+List.propTypes = {
+  data: PropTypes.object.isRequired,
+};

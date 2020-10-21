@@ -11,10 +11,6 @@ import "./App.css";
 
 export const initialState = localStorage.getItem("ListProducts") ? JSON.parse(localStorage.getItem("ListProducts")) : [];
 
-export const fixDate = (date) => {
-  return new Date(date).toUTCString();
-};
-
 function App() {
   const [listProducts, setListProducts] = useState(initialState);
   const [showProducts, setShowProducts] = useState(status[0]);
