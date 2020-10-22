@@ -18,9 +18,11 @@ const List = ({ data }) => {
         <>
           <div className="filterBtns">
             <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group" onClick={(e) => data.setShowProducts(e.target.innerText)}>
-              <Button>{status[0]}</Button>
-              <Button>{status[1]}</Button>
-              <Button>{status[2]}</Button>
+              {status.map((item) => (
+                <Button key={item} disabled={data.showProducts === item}>
+                  {item}
+                </Button>
+              ))}
             </ButtonGroup>
           </div>
           <ul className="listProducts">

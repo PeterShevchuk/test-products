@@ -1,7 +1,7 @@
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from "@material-ui/core/styles";
 
-export const status = ["All", "RUN OUT", "HAVE"];
+export const status = ["ALL", "RUN OUT", "HAVE"];
 
 export const fixDate = (date) => {
   return new Date(date).toUTCString();

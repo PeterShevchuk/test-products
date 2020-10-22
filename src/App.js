@@ -17,6 +17,7 @@ function App() {
   const sortListProduct = () => listProducts.sort((a, b) => (a.priority - b.priority !== 0 ? a.priority - b.priority : a.nameProduct.localeCompare(b.nameProduct)));
   const data = {
     listProducts,
+    showProducts,
     setListProducts,
     setShowProducts,
     deleteProduct: (id) => setListProducts(listProducts.filter((item) => item.id !== id)),

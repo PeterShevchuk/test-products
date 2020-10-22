@@ -34,38 +34,40 @@ const Edit = ({ data }) => {
             <h4 className="editPage__title-center">Delete</h4>
             <h4 className="editPage__title-center">Info</h4>
           </li>
-          {data.listProducts.map((item) => (
-            <li key={item.id} className="editPage__item">
-              <input className="editPage__item-input" value={item.nameProduct} type="text" name="nameProduct" onChange={(e) => inputHeandle(e, item.id)} placeholder="Назва"></input>
-              <select className="editPage__item-input" name="priority" onChange={(e) => inputHeandle(e, item.id)} value={item.priority}>
-                <option style={{ backgroundColor: colorsPriority[1] }}>1</option>
-                <option style={{ backgroundColor: colorsPriority[2] }}>2</option>
-                <option style={{ backgroundColor: colorsPriority[3] }}>3</option>
-                <option style={{ backgroundColor: colorsPriority[4] }}>4</option>
-                <option style={{ backgroundColor: colorsPriority[5] }}>5</option>
-              </select>
-              <Checkbox checked={item.status} color="primary" inputProps={{ "aria-label": "secondary checkbox" }} onChange={(e) => data.itemDisabled(item.id)} className="editPage__item-checked" />
-              <Button variant="contained" color="secondary" onClick={() => data.deleteProduct(item.id)}>
-                DELETE
-              </Button>
-              <HtmlTooltip
-                title={
-                  <React.Fragment>
-                    <p className="listProducts__options-info">
-                      <b>Created</b>: {fixDate(item.date.created)}
-                    </p>
-                    <p className="listProducts__options-info">
-                      <b>Last edit</b>: {fixDate(item.date.edit)}
-                    </p>
-                  </React.Fragment>
-                }
-              >
-                <Button>
-                  <InfoIcon />
+          {data.listProducts
+            .map((item) => (
+              <li key={item.id} className="editPage__item">
+                <input className="editPage__item-input" value={item.nameProduct} type="text" name="nameProduct" onChange={(e) => inputHeandle(e, item.id)} placeholder="Назва"></input>
+                <select className="editPage__item-input" name="priority" onChange={(e) => inputHeandle(e, item.id)} value={item.priority}>
+                  <option style={{ backgroundColor: colorsPriority[1] }}>1</option>
+                  <option style={{ backgroundColor: colorsPriority[2] }}>2</option>
+                  <option style={{ backgroundColor: colorsPriority[3] }}>3</option>
+                  <option style={{ backgroundColor: colorsPriority[4] }}>4</option>
+                  <option style={{ backgroundColor: colorsPriority[5] }}>5</option>
+                </select>
+                <Checkbox checked={item.status} color="primary" inputProps={{ "aria-label": "secondary checkbox" }} onChange={(e) => data.itemDisabled(item.id)} className="editPage__item-checked" />
+                <Button variant="contained" color="secondary" onClick={() => data.deleteProduct(item.id)}>
+                  DELETE
                 </Button>
-              </HtmlTooltip>
-            </li>
-          ))}
+                <HtmlTooltip
+                  title={
+                    <React.Fragment>
+                      <p className="listProducts__options-info">
+                        <b>Created</b>: {fixDate(item.date.created)}
+                      </p>
+                      <p className="listProducts__options-info">
+                        <b>Last edit</b>: {fixDate(item.date.edit)}
+                      </p>
+                    </React.Fragment>
+                  }
+                >
+                  <Button>
+                    <InfoIcon />
+                  </Button>
+                </HtmlTooltip>
+              </li>
+            ))
+            .reverse()}
         </ul>
       )}
     </div>
