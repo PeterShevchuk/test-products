@@ -7,7 +7,7 @@ export const fixDate = (date) => {
   return new Date(date).toUTCString();
 };
 
-export const colorsPriority = ["", "red", "orange", "fuchsia", "purple", "blue"];
+export const colorsPriority = ["red", "orange", "fuchsia", "purple", "blue"];
 
 export const HtmlTooltip = withStyles((theme) => ({
   tooltip: {

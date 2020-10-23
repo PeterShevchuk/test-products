@@ -40,21 +40,23 @@ function App() {
     localStorage.setItem("ListProducts", JSON.stringify(listProducts));
   }, [listProducts]);
   return (
-    <Router>
-      <header className="container">
-        <Menu />
-      </header>
-      <main className="container">
-        <Switch>
-          <Route path={nav.edit}>
-            <Edit data={data} />
-          </Route>
-          <Route path={nav.home} exact>
-            <Home data={data} />
-          </Route>
-        </Switch>
-      </main>
-    </Router>
+    <div className="global">
+      <Router>
+        <header className="container">
+          <Menu />
+        </header>
+        <main className="container">
+          <Switch>
+            <Route path={nav.edit}>
+              <Edit data={data} />
+            </Route>
+            <Route path={nav.home} exact>
+              <Home data={data} />
+            </Route>
+          </Switch>
+        </main>
+      </Router>
+    </div>
   );
 }
 

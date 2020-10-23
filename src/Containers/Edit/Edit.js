@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import InfoIcon from "@material-ui/icons/Info";
+import IconButton from "@material-ui/core/IconButton";
+import BackspaceRoundedIcon from "@material-ui/icons/BackspaceRounded";
 
 import { fixDate, colorsPriority, HtmlTooltip } from "../../vars";
 
@@ -22,7 +24,7 @@ const Edit = ({ data }) => {
 
   return (
     <div className="editPage">
-      <Button variant="contained" color="primary" onClick={addItem} type="submit">
+      <Button variant="contained" onClick={addItem} type="submit">
         ADD PRODUCT
       </Button>
       {data.listProducts.length > 0 && (
@@ -31,24 +33,21 @@ const Edit = ({ data }) => {
             <h4>Name product</h4>
             <h4>Set prioritet</h4>
             <h4 className="editPage__title-center">Have?</h4>
-            <h4 className="editPage__title-center">Delete</h4>
             <h4 className="editPage__title-center">Info</h4>
+            <h4 className="editPage__title-center">Delete</h4>
           </li>
           {data.listProducts
             .map((item) => (
               <li key={item.id} className="editPage__item">
                 <input className="editPage__item-input" value={item.nameProduct} type="text" name="nameProduct" onChange={(e) => inputHeandle(e, item.id)} placeholder="Назва"></input>
                 <select className="editPage__item-input" name="priority" onChange={(e) => inputHeandle(e, item.id)} value={item.priority}>
-                  <option style={{ backgroundColor: colorsPriority[1] }}>1</option>
-                  <option style={{ backgroundColor: colorsPriority[2] }}>2</option>
-                  <option style={{ backgroundColor: colorsPriority[3] }}>3</option>
-                  <option style={{ backgroundColor: colorsPriority[4] }}>4</option>
-                  <option style={{ backgroundColor: colorsPriority[5] }}>5</option>
+                  <option style={{ backgroundColor: colorsPriority[0] }}>1</option>
+                  <option style={{ backgroundColor: colorsPriority[1] }}>2</option>
+                  <option style={{ backgroundColor: colorsPriority[2] }}>3</option>
+                  <option style={{ backgroundColor: colorsPriority[3] }}>4</option>
+                  <option style={{ backgroundColor: colorsPriority[4] }}>5</option>
                 </select>
-                <Checkbox checked={item.status} color="primary" inputProps={{ "aria-label": "secondary checkbox" }} onChange={(e) => data.itemDisabled(item.id)} className="editPage__item-checked" />
-                <Button variant="contained" color="secondary" onClick={() => data.deleteProduct(item.id)}>
-                  DELETE
-                </Button>
+                <Checkbox checked={item.status} color="default" inputProps={{ "aria-label": "secondary checkbox" }} onChange={(e) => data.itemDisabled(item.id)} className="editPage__item-checked" />
                 <HtmlTooltip
                   title={
                     <React.Fragment>
@@ -61,10 +60,13 @@ const Edit = ({ data }) => {
                     </React.Fragment>
                   }
                 >
-                  <Button>
+                  <IconButton>
                     <InfoIcon />
-                  </Button>
+                  </IconButton>
                 </HtmlTooltip>
+                <IconButton onClick={() => data.deleteProduct(item.id)}>
+                  <BackspaceRoundedIcon />
+                </IconButton>
               </li>
             ))
             .reverse()}
